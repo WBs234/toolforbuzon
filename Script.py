@@ -17,16 +17,15 @@ while True:
         nummf = file.read().splitlines()
 
     nums = []
-    sufixo=compnum
-        compnum = numero + nummf
-        numero_parsed = phonenumbers.parse(compnum)
-        operadora = carrier.name_for_number(numero_parsed, "pt-br")
-        
-        if operadora == "Claro":
-            print(numero + verde + " é Claro!")
-            nums.append(compnum)
-        else:
-            print(numero + vermelho + " não é Claro!")
+    compnum = numero + nummf
+    numero_parsed = phonenumbers.parse(compnum)
+    operadora = carrier.name_for_number(numero_parsed, "pt-br")
+               
+    if operadora == "Claro":
+         print(numero + verde + " é Claro!")
+         nums.append(compnum)
+    else:
+         print(numero + vermelho + " não é Claro!")
 
     os.system("clear")
     print("Os números válidos são:", nums)

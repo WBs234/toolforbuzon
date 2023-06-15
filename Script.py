@@ -14,7 +14,9 @@ while True:
     nuf = "f.txt"
 
     with open(nuf, "r") as file:
-        nummf = file.read().splitlines()
+        nummf = file.readlines()
+        for linha in nummf:
+            nummf=nummf.strip()
 
     nums = []
     

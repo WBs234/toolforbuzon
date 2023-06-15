@@ -15,9 +15,9 @@ while True:
     
     with open(nuf, "r") as file:
         nummf = file.readlines()
-            while linha != "":
-                print(linha.strip())
-                linha = arquivo.readline()
+            while nummf != "":
+                print(nummf.strip())
+                
 
 
     nums = []

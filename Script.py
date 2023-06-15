@@ -12,15 +12,16 @@ while True:
     numero = input("Digite a base (+55XXXXXX): ")
 
     nuf = "f.txt"
-
+    
     with open(nuf, "r") as file:
         nummf = file.readlines()
         for linha in nummf:
+            nummf=str(nummf)
             nummf=nummf.strip()
 
     nums = []
     
-    compnum = str(numero) + str(nummf)
+    compnum = str(numero) + nummf
     numero_parsed = phonenumbers.parse(compnum)
     operadora = carrier.name_for_number(numero_parsed, "pt-br")
                

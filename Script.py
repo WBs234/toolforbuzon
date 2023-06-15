@@ -17,8 +17,7 @@ while True:
         nummf = file.read().splitlines()
 
     nums = []
-
-    for sufixo in nummf:
+    sufixo=compnum
         compnum = numero + sufixo
         numero_parsed = phonenumbers.parse(compnum)
         operadora = carrier.name_for_number(numero_parsed, "pt-br")

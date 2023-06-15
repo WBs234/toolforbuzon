@@ -43,4 +43,4 @@ while True:
 
         print(numero+vermelho+"não é Claro!")
 os.system("clear")
-print("Os números válidos são:")
+print("Os números válidos são:", nums)

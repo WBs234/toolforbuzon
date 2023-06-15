@@ -22,12 +22,12 @@ while True:
         compnum = numero + sufixo
         numero_parsed = phonenumbers.parse(compnum)
         operadora = carrier.name_for_number(numero_parsed, "pt-br")
-
-            if operadora == "Claro":
-                print(numero + verde + " é Claro!")
-                nums.append(compnum)
-            else:
-                print(numero + vermelho + " não é Claro!")
+        
+        if operadora == "Claro":
+            print(numero + verde + " é Claro!")
+            nums.append(compnum)
+        else:
+            print(numero + vermelho + " não é Claro!")
 
     os.system("clear")
     print("Os números válidos são:", nums)

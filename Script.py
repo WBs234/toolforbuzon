@@ -15,6 +15,7 @@ while True:
     
     with open(nuf, "r") as file:
         nummf = file.readlines()
+        nummf = str(nummf)
         while nummf != "":
             print(nummf.strip())
                 

@@ -25,11 +25,10 @@ while True:
         operadora = carrier.name_for_number(numero_parsed, "pt-br")
 
         break
-    os.system("clear")
     else:
 
         print("Número de telefone inválido.")
-
+os.system("clear")
 while True:
 
     if operadora == "Claro":

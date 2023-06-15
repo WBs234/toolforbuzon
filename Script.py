@@ -24,7 +24,7 @@ while True:
                
     if operadora == "Claro":
          print(numero + verde + " é Claro!")
-         nums.append(compnum)
+         nums.append(nums)
     else:
          print(numero + vermelho + " não é Claro!")
 

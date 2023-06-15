@@ -3,44 +3,36 @@ import time
 import os
 from phonenumbers import carrier
 
+verde = "\033[92m"
+vermelho = "\033[91m"
+
 while True:
     os.system("clear")
     time.sleep(1)
-    numero = input("digite a base(+55XXXXXX): ")
-    
+    numero = input("Digite a base (+55XXXXXX): ")
+
     nuf = "f.txt"
 
-    with open(nuf,"r") as file:
-
+    with open(nuf, "r") as file:
         nummf = file.read().splitlines()
-        str(nummf)
 
+    nums = []
 
-        compnum=numero+nummf
+    for sufixo in nummf:
+        compnum = numero + sufixo
+        numero_parsed = phonenumbers.parse(compnum)
 
-    numero_parsed = phonenumbers.parse(compnum)
+        if phonenumbers.is_valid_number(numero_parsed):
+            operadora = carrier.name_for_number(numero_parsed, "pt-br")
 
-    if phonenumbers.is_valid_number(numero_parsed):
+            if operadora == "Claro":
+                print(numero + verde + " é Claro!")
+                nums.append(compnum)
+            else:
+                print(numero + vermelho + " não é Claro!")
+        else:
+            print("Número de telefone inválido.")
 
-        operadora = carrier.name_for_number(numero_parsed, "pt-br")
+    os.system("clear")
+    print("Os números válidos são:", nums)
 
-        break
-    else:
-
-        print("Número de telefone inválido.")
-os.system("clear")
-while True:
-
-    if operadora == "Claro":
-
-        print(numero+verde+"é Claro!")
-
-        nums=[]
-
-        nums.append(compnum)
-
-    else:
-
-        print(numero+vermelho+"não é Claro!")
-os.system("clear")
-print("Os números válidos são:", nums)

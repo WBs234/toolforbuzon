@@ -18,7 +18,7 @@ while True:
 
     nums = []
     sufixo=compnum
-        compnum = numero + sufixo
+        compnum = numero + nummf
         numero_parsed = phonenumbers.parse(compnum)
         operadora = carrier.name_for_number(numero_parsed, "pt-br")
         

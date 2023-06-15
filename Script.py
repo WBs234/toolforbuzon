@@ -21,17 +21,13 @@ while True:
     for sufixo in nummf:
         compnum = numero + sufixo
         numero_parsed = phonenumbers.parse(compnum)
-
-        if phonenumbers.is_valid_number(numero_parsed):
-            operadora = carrier.name_for_number(numero_parsed, "pt-br")
+        operadora = carrier.name_for_number(numero_parsed, "pt-br")
 
             if operadora == "Claro":
                 print(numero + verde + " é Claro!")
                 nums.append(compnum)
             else:
                 print(numero + vermelho + " não é Claro!")
-        else:
-            print("Número de telefone inválido.")
 
     os.system("clear")
     print("Os números válidos são:", nums)

@@ -1,4 +1,3 @@
-GNU nano 7.2                                                             b2.py
 import phonenumbers
 import time
 import os

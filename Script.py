@@ -57,7 +57,7 @@ while True:
                         auth_token = 'Sa925709868cb657fb7b7924d88a21b3e'
                         client = Client(account_sid, auth_token)
                         try:
-                            response = client.lookups.phone_numbers(numero_completo).fetch()
+                            response = client.lookups.phone_numbers(numero_telefone).fetch(country_code='BR')
                         if response.phone_number:
                             if phonenumbers.is_valid_number(numero_parseado):
                                 if operadora == "Claro":

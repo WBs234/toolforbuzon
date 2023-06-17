@@ -38,7 +38,7 @@ while True:
                 linha = linha.rstrip()
                 numero_completo = numero_base + linha
 
-
+                     
                 def validar_numero_telefone(numero):
                     try:
                         numero_parseado = phonenumbers.parse(numero, "BR")
@@ -48,7 +48,7 @@ while True:
                             return False
                     except phonenumbers.phonenumberutil.NumberParseException:
                         return False
-                 if validar_numero_telefone(numero_completo):
+                if validar_numero_telefone(numero_completo):
                      numero_parseado = phonenumbers.parse(numero_completo, "BR")
                      operadora = carrier.name_for_number(numero_parseado, "pt-br")
                      os.system("clear")

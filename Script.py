@@ -1,6 +1,7 @@
 import time
 import os
 import phonenumbers 
+from twilio.rest import Client
 
 verde = "\033[92m"
 vermelho = "\033[91m"
@@ -26,7 +27,6 @@ while True:
     fa=input(ciano+"["+marrom+"•"+ciano+"] "+marrom)
     print("\n")
     if fa=="1":
-        import phonenumbers
         from phonenumbers import carrier
         import os
         numero_base = input(branco + "Digite a base (+55XXXXXXX): " + marrom)
@@ -52,12 +52,20 @@ while True:
                     numero_parseado = phonenumbers.parse(numero_completo, "BR")
                     operadora = carrier.name_for_number(numero_parseado, "pt-br")
                     os.system("clear")
-                    if phonenumbers.is_valid_number(numero_parseado):
-                        if operadora == "Claro":
-                            print(numero_completo + verde + " é Claro!")
-                            nums.append(numero_completo)
-                        else:
-                            print(numero_completo + vermelho + " não é Claro!")
+                    def verificar_numero_telefone(numero_completo):
+                        account_sid = 'AC8ec4c657516e0c1fd80d6123d6a86710'
+                        auth_token = 'Sa925709868cb657fb7b7924d88a21b3e'
+                        client = Client(account_sid, auth_token)
+                        try:
+                            response = client.lookups.phone_numbers(numero_completo).fetch()
+                        if response.phone_number:
+                        print("O número de telefone é válido.")
+                        if phonenumbers.is_valid_number(numero_parseado):
+                            if operadora == "Claro":
+                                print(numero_completo + verde + " é Claro!")
+                                nums.append(numero_completo)
+                            else:
+                                print(numero_completo + vermelho + " não é Claro!")
         os.system("clear")
         print("Os números válidos são:")
         print(nums)

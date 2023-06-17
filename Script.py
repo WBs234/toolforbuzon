@@ -46,8 +46,8 @@ while True:
                             return True
                         else:
                             return False
-                except phonenumbers.phonenumberutil.NumberParseException:
-                    return False
+                    except phonenumbers.phonenumberutil.NumberParseException:
+                        return False
                 if validar_numero_telefone(numero_completo):
                     numero_parseado = phonenumbers.parse(numero_completo, "BR")
                     operadora = carrier.name_for_number(numero_parseado, "pt-br")

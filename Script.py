@@ -49,17 +49,17 @@ while True:
                     except phonenumbers.phonenumberutil.NumberParseException:
                         return False
 
+                if phonenumbers.is_valid_number(numero_parseado) is True:
+                    if validar_numero_telefone(numero_completo):
+                        numero_parseado = phonenumbers.parse(numero_completo, "BR")
+                        operadora = carrier.name_for_number(numero_parseado, "pt-br")
+                        os.system("clear")
 
-                if validar_numero_telefone(numero_completo):
-                    numero_parseado = phonenumbers.parse(numero_completo, "BR")
-                    operadora = carrier.name_for_number(numero_parseado, "pt-br")
-                    os.system("clear")
-
-                    if operadora == "Claro":
-                        print(numero_completo + verde + " é Claro!")
-                        nums.append(numero_completo)
-                    else:
-                        print(numero_completo + vermelho + " não é Claro!")
+                        if operadora == "Claro":
+                            print(numero_completo + verde + " é Claro!")
+                            nums.append(numero_completo)
+                        else:
+                            print(numero_completo + vermelho + " não é Claro!")
 
         os.system("clear")
         print("Os números válidos são:")

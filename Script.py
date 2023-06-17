@@ -59,13 +59,12 @@ while True:
                         try:
                             response = client.lookups.phone_numbers(numero_completo).fetch()
                         if response.phone_number:
-                        print("O número de telefone é válido.")
-                        if phonenumbers.is_valid_number(numero_parseado):
-                            if operadora == "Claro":
-                                print(numero_completo + verde + " é Claro!")
-                                nums.append(numero_completo)
-                            else:
-                                print(numero_completo + vermelho + " não é Claro!")
+                            if phonenumbers.is_valid_number(numero_parseado):
+                                if operadora == "Claro":
+                                    print(numero_completo + verde + " é Claro!")
+                                    nums.append(numero_completo)
+                                else:
+                                    print(numero_completo + vermelho + " não é Claro!")
         os.system("clear")
         print("Os números válidos são:")
         print(nums)

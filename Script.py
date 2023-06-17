@@ -1,7 +1,6 @@
-import phonenumbers
 import time
 import os
-from phonenumbers import carrier
+import phonenumbers 
 
 verde = "\033[92m"
 vermelho = "\033[91m"
@@ -27,31 +26,40 @@ while True:
     fa=input(ciano+"["+marrom+"•"+ciano+"] "+marrom)
     print("\n")
     if fa=="1":
-        numero = input(branco+"Digite a base (+55XXXXXXX): "+marrom)
+        import phonenumbers
+        from phonenumbers import carrier
+        import os
+        numero_base = input(branco + "Digite a base (+55XXXXXXX): " + marrom)
         nuf = "f.txt"
-        with open(nuf, "r") as file:
-            for palavra in file:
-                palavra=palavra.rstrip()
-                numero=str(numero)+palavra
-            def validar_numero_telefone(numero):
-                try:
-                    numero_parseado = phonenumbers.parse(numero, "BR")
-            if phonenumbers.is_valid_number(numero_parseado):
-                return True
-            else:
-                return False
-            except phonenumbers.phonenumberutil.NumberParseException:
-                return False
-        if validar_numero_telefone(numero):
-            numero_parseado = phonenumbers.parse(numero, "BR")
-            operadora = carrier.name_for_number(numero_parseado, "pt-br")
-            os.system("clear")
+        nums = []
 
-            if operadora == "Claro":
-                print(numero + verde + " é Claro!")
-                nums.append(numero)
-            else:
-                print(numero + vermelho + " não é Claro!")
+        with open(nuf, "r") as file:
+            for linha in file:
+                linha = linha.rstrip()
+                numero_completo = numero_base + linha
+
+
+                def validar_numero_telefone(numero):
+                    try:
+                        numero_parseado = phonenumbers.parse(numero, "BR")
+                        if phonenumbers.is_valid_number(numero_parseado):
+                            return True
+                        else:
+                            return False
+                    except phonenumbers.phonenumberutil.NumberParseException:
+                        return False
+
+
+                if validar_numero_telefone(numero_completo):
+                    numero_parseado = phonenumbers.parse(numero_completo, "BR")
+                    operadora = carrier.name_for_number(numero_parseado, "pt-br")
+                    os.system("clear")
+
+                    if operadora == "Claro":
+                        print(numero_completo + verde + " é Claro!")
+                        nums.append(numero_completo)
+                    else:
+                        print(numero_completo + vermelho + " não é Claro!")
 
         os.system("clear")
         print("Os números válidos são:")
@@ -98,7 +106,7 @@ while True:
                 print(" / /_/ /_  /  ")
                 print(" \____/ /_/   ")
             elif operadora_nome== "Tim":
-                print(Azul)
+                print(azul)
                 print(" ____________            ")
                 print(" ___  __/__(_)______ ___ ")
                 print(" __  /  __  /__  __ `__ |")

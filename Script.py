@@ -1,6 +1,6 @@
 import time
 import os
-import phonenumbers 
+import phonenumbers
 from twilio.rest import Client
 
 verde = "\033[92m"
@@ -17,18 +17,19 @@ while True:
     os.system("clear")
     time.sleep(1)
     print("\n")
-    print(ciano+"┏"+"━━━━"*5+"┓")
-    print(ciano+" ["+marrom+"1"+ciano+"] "+marrom+"BruteBuzon")
-    print(ciano+" ["+marrom+"2"+ciano+"] "+marrom+"Verificar Número")
+    print(ciano + "┏" + "━━━━" * 5 + "┓")
+    print(ciano + " [" + marrom + "1" + ciano + "] " + marrom + "BruteBuzon")
+    print(ciano + " [" + marrom + "2" + ciano + "] " + marrom + "Verificar Número")
     print("     Específico")
-    print(ciano+"┗"+"━━━━"*5+"┛")
+    print(ciano + "┗" + "━━━━" * 5 + "┛")
     print("\n")
-    print(branco+"Oque deseja? ")
-    fa=input(ciano+"["+marrom+"•"+ciano+"] "+marrom)
+    print(branco + "Oque deseja? ")
+    fa = input(ciano + "[" + marrom + "•" + ciano + "] " + marrom)
     print("\n")
-    if fa=="1":
+    if fa == "1":
         from phonenumbers import carrier
         import os
+
         numero_base = input(branco + "Digite a base (+55XXXXXXX): " + marrom)
         nuf = "f.txt"
         nums = []
@@ -38,7 +39,7 @@ while True:
                 linha = linha.rstrip()
                 numero_completo = numero_base + linha
 
-                     
+
                 def validar_numero_telefone(numero):
                     try:
                         numero_parseado = phonenumbers.parse(numero, "BR")
@@ -48,16 +49,18 @@ while True:
                             return False
                     except phonenumbers.phonenumberutil.NumberParseException:
                         return False
+                    
                 if validar_numero_telefone(numero_completo):
                     numero_parseado = phonenumbers.parse(numero_completo, "BR")
                     operadora = carrier.name_for_number(numero_parseado, "pt-br")
                     os.system("clear")
+                    
                     def verificar_numero_telefone(numero_completo):
                         account_sid = 'AC8ec4c657516e0c1fd80d6123d6a86710'
                         auth_token = 'Sa925709868cb657fb7b7924d88a21b3e'
                         client = Client(account_sid, auth_token)
                         try:
-                            response = client.lookups.phone_numbers(numero_completo).fetch(country_code='BR')
+                            response = client.lookups.phone_numbers1(numero_completo).fetch(country_code='BR')
                             if response.phone_number:
                                 if phonenumbers.is_valid_number(numero_parseado):
                                     if operadora == "Claro":
@@ -67,19 +70,21 @@ while True:
                                         print(numero_completo + vermelho + " não é Claro!")
                         except Exception:
                             pass
-        os.system("clear") 
+        os.system("clear")
         print("Os números válidos são:")
         print(nums)
         print("\n")
-        print("Deseja tentar de novo?"+marrom+"[S|N]"+vermelho+" (Não esqueça de salvar os números)")
-        re=input(ciano+"["+marrom+"•"+ciano+"] "+marrom)
-        if re=="S":
+        print("Deseja tentar de novo?" + marrom + "[S|N]" + vermelho + " (Não esqueça de salvar os números)")
+        re = input(ciano + "[" + marrom + "•" + ciano + "] " + marrom)
+        if re == "S":
             os.system("clear")
         else:
             break
-    elif fa== "2":
-        print(branco+"Digite o número assim "+marrom+"(+558877776666):")
-        numero=input(ciano+"["+marrom+"•"+ciano+"] "+marrom)
+    elif fa == "2":
+        print(branco + "Digite o número assim " + marrom + "(+558877776666):")
+        numero = input(ciano + "[" + marrom + "•" + ciano + "] " + marrom)
+
+
         def validar_numero_telefone(numero):
             try:
                 numero_parseado = phonenumbers.parse(numero, "BR")
@@ -89,8 +94,10 @@ while True:
                     return False
             except phonenumbers.phonenumberutil.NumberParseException:
                 return False
+
+
         def operadora_3():
-            if operadora_nome== "Claro":
+            if operadora_nome == "Claro":
                 print(vermelho)
                 print(" ______________ ")
                 print(" __  ____/__  /_____ _____________ ")
@@ -104,49 +111,51 @@ while True:
                 print(" __ | / /__  /__ | / /  __ /")
                 print(" __ |/ / _  / __ |/ // /_/ /")
                 print(" _____/  /_/  _____/ \____/")
-            elif operadora_nome== "Oi":
+            elif operadora_nome == "Oi":
                 print(verde)
                 print(" ____________ ")
                 print(" __  __ \__(_)")
                 print(" _  / / /_  / ")
                 print(" / /_/ /_  /  ")
                 print(" \____/ /_/   ")
-            elif operadora_nome== "Tim":
+            elif operadora_nome == "Tim":
                 print(azul)
                 print(" ____________            ")
                 print(" ___  __/__(_)______ ___ ")
                 print(" __  /  __  /__  __ `__ |")
                 print(" _  /   _  / _  / / / / /")
                 print(" /_/    /_/  /_/ /_/ /_/ ")
+
+
         if validar_numero_telefone(numero):
             numero_parseado = phonenumbers.parse(numero, "BR")
             operadora_nome = carrier.name_for_number(numero_parseado, "pt-br")
             os.system("clear")
-            print(ciano+"┏"+"━━━━"*5+"┓")
-            print(" "+marrom+numero)
+            print(ciano + "┏" + "━━━━" * 5 + "┓")
+            print(" " + marrom + numero)
             print("\n")
-            print(verde+" Válido")
+            print(verde + " Válido")
             operadora_3()
-            print(ciano+"┗"+"━━━━"*5+"┛")
+            print(ciano + "┗" + "━━━━" * 5 + "┛")
             time.sleep(2)
             print("\n")
-            print("Deseja tentar de novo?"+marrom+"[S|N]"+marrom)
-            re=input(ciano+"["+marrom+"•"+ciano+"] "+marrom)
-            if re=="S":
+            print("Deseja tentar de novo?" + marrom + "[S|N]" + marrom)
+            re = input(ciano + "[" + marrom + "•" + ciano + "] " + marrom)
+            if re == "S":
                 os.system("clear")
             else:
                 break
         else:
-            print(ciano+"┏"+"━━━━"*5+"┓")
-            print(marrom+numero)
+            print(ciano + "┏" + "━━━━" * 5 + "┓")
+            print(marrom + numero)
             print("\n")
-            print(vermelho+"INVALIDO")
-            print(ciano+"┗"+"━━━━"*5+"┛")
+            print(vermelho + "INVALIDO")
+            print(ciano + "┗" + "━━━━" * 5 + "┛")
             time.sleep(2)
             print("\n")
-            print("Deseja tentar de novo?"+marrom+"[S|N]"+marrom)
-            re=input(ciano+"["+marrom+"•"+ciano+"] "+marrom)
-            if re=="S":
+            print("Deseja tentar de novo?" + marrom + "[S|N]" + marrom)
+            re = input(ciano + "[" + marrom + "•" + ciano + "] " + marrom)
+            if re == "S":
                 os.system("clear")
             else:
                 break

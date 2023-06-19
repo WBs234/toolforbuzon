@@ -58,14 +58,16 @@ while True:
                         client = Client(account_sid, auth_token)
                         try:
                             response = client.lookups.phone_numbers(numero_completo).fetch(country_code='BR')
-                    if response.phone_number:
-                        if phonenumbers.is_valid_number(numero_parseado):
-                            if operadora == "Claro":
-                                print(numero_completo + verde + " é Claro!")
-                                nums.append(numero_completo)
-                            else:
-                                print(numero_completo + vermelho + " não é Claro!")
-        os.system("clear")
+                            if response.phone_number:
+                                if phonenumbers.is_valid_number(numero_parseado):
+                                    if operadora == "Claro":
+                                        print(numero_completo + verde + " é Claro!")
+                                        nums.append(numero_completo)
+                                    else:
+                                        print(numero_completo + vermelho + " não é Claro!")
+                        except Exception:
+                            pass
+        os.system("clear") 
         print("Os números válidos são:")
         print(nums)
         print("\n")
